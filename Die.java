@@ -1,19 +1,28 @@
+/*
+-----------------Readme--------------------
+Student Name- Aakash Sadnani
+Student ID - A00235504
+This is the Dice class here where we define the constructors, the accessors, the mutators.
+Also there is a print function which prints the dice type and side up
+-----------------x------------------------
+*/
+
 import java.util.Random;
 
 public class Die {
-
+    
+    //initializing the variables
     String diceType;
-
     int numberOfSides;
-
     int currentSideUp;
 
+    //using the Random function to get random values for the dice side up
+     //defining the constructors 3 types
     public Die(){
         diceType = "d6";
         numberOfSides = 6;
         currentSideUp = (int)(Math.random()*numberOfSides + 1);  
     }
-
 
     public Die(int numberOfSides){
         //dice cannot have sides less than 3 or more than 100
@@ -37,17 +46,22 @@ public class Die {
         return currentSideUp;
     }
 
-
+    //defining the accessors for the dice
     public String getDiceType() {
 		return diceType;
 	}
 
-	public void setDiceType(String diceType) {
-		this.diceType = diceType;
+    public int getNumberofSides() {
+		return numberOfSides;
 	}
 
-	public int getNumberofSides() {
-		return numberOfSides;
+    public int getSidesUp() {
+		return currentSideUp;
+	}
+
+    //defining the mutators for the dice
+	public void setDiceType(String diceType) {
+		this.diceType = diceType;
 	}
 
 	public void setNumSides(int numberOfSides) {
@@ -55,14 +69,11 @@ public class Die {
 		this.diceType = "d"+numberOfSides;
 	}
 
-	public int getSidesUp() {
-		return currentSideUp;
-	}
-
 	public void setSidesUp(int sideUp) {
 		this.currentSideUp = sideUp;
 	}
 	
+    //printing the dice output with number of sides and the side up
 	public void printDice() {
 	System.out.println("The current side of " + this.numberOfSides + " is " + this.currentSideUp + ".");
     }	
