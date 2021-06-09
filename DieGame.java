@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
 -----------------Readme--------------------
 Student Name- Aakash Sadnani
@@ -16,6 +18,7 @@ public class DieGame {
 
     public static void main(String[] args) {
 
+        int inputNumberOfSides = 0;
         System.out.println("Die Game");
 
         // dice 1 created
@@ -53,15 +56,26 @@ public class DieGame {
         dice3.rollmethod();
         dice3.printDice();
 
-        // setting the sides manually
-        System.out.println("\n\nSetting the d20 to show 20...");
-        dice3.setNumSides(20);
-        dice3.setDiceType("d20");
-        System.out.println("The side up of " + dice3.getDiceType() + " is now " + dice3.getNumberofSides());
+        //Taking inputs from user for the number of sides of dice
+        System.out.println("\n\nSetting the dice to user inputs..");
+        System.out.println("Please enter number of sides(greater than or equal to 3) for a dice");
+        Scanner scr = new Scanner(System.in);
+        inputNumberOfSides = scr.nextInt();
+        scr.nextLine();
 
-        System.out.println("\n\nSetting the d10 to show 10...");
-        dice2.setNumSides(10);
-        System.out.println("The side up of " + dice2.getDiceType() + " is now " + dice2.getNumberofSides());
+        if(inputNumberOfSides >= 3){
+            System.out.println("\n\nSetting the d" + inputNumberOfSides + " to show " + inputNumberOfSides + " ...");
+            dice3.setNumSides(inputNumberOfSides);
+            dice3.setDiceType("d" + inputNumberOfSides);
+            dice3.rollmethod();
+            while (inputNumberOfSides != dice3.getSidesUp()) {
+                dice3.rollmethod();
+            }
+            System.out.println("The side up of " + dice3.getDiceType() + " is now " + dice3.getSidesUp());    
+        }
+        else{
+            System.out.println("Please enter number of dice sides 3 or more than 3!");
+        }
 
         // Bonus Code Here
         // Here we roll all the dice till we get the same sides up and its a YAHTZEE..
